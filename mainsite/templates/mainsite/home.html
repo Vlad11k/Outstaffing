@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="sending-request-container">
+        <div class="sending-request-image">
+            <img src="{% static 'images/application.png' %}">
+        </div>
+        <div class="sending-request-form">
+            <h2>Закройте IT вакансию быстро и эффективно</h2>
+            <p>Заполните заявку. Мы ответим Вам в течение 10 минут.</p>
+            <div class="form">
+                <div class="form-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-error">{{ form.non_field_errors }}</div>
+                        {% for f in form %}
+                            <div class="form-group">
+                                <div>
+                                    {{ f }}
+                                </div>
+                            </div>
+                            <div class="form-error">{{ f.errors }}</div>
+                        {% endfor %}
+                        <button type="submit">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-container">
+        <div class="page-header">
+            <h2>Закрывать вакансию в нашем кадровом ИТ-агентстве выгодно — вы не рискуете финансами</h2>
+        </div>
+        <div class="finances-wrapper">
+            <div class="finances-item finances-item_border">
+                <div class="h3">Фиксированная стоимость</div>
+                <p>13% от годовой зарплаты сотрудника (гросс — зарплата до удержания налогов).</p>
+                <div class="finances-item-img"></div>
+            </div>
+            <div class="finances-item finances-item_border">
+                <div class="h3">Без предоплаты</div>
+                <p>Первая оплата после трудоустройства кандидата на работу. Вторая — после прохождения испытательного срока.</p>
+                <div class="finances-item-img"></div>
+            </div>
+            <div class="finances-item">
+                <div class="h3">Бесплатная замена</div>
+                <p>Однократная бесплатная замена кандидата, если он вам не подошел.</p>
+                <div class="finances-item-img"></div>
+            </div>
+            <div class="finances-item">
+                <div class="h3">Детальный договор</div>
+                <p>Прописываем обязательства сторон, состав услуг, порядок и величину оплаты.
+                    Все пункты не подлежат изменению после подписания.</p>
+                <div class="finances-item-img"></div>
+            </div>
+            <div class="finances-item">
+                <div class="h3">Без доплаты за срочность</div>
+                <p>Стоимость услуг не изменится, если кандидат вам необходим срочно.</p>
+                <div class="finances-item-img"></div>
+            </div>
+            <div class="finances-item">
+                <div class="h3">Работа с возражениями</div>
+                <p>Отработаем возражения кандидата, о которых он не скажет напрямую.</p>
+                <div class="finances-item-img"></div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

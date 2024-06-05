@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load mainsite_tags %}
+
+{% block content %}
+    <div class="categories">
+        <ul class="category-list">
+            {% if cat_selected == 0 %}
+                <li>Все</li>
+            {% else %}
+                <li><a href="{% url 'blog' %}">Все</a></li>
+            {% endif %}
+            {% show_blog_categories cat_selected %}
+        </ul>
+    </div>
+    <section class="other-services">
+        <div class="podbor-container">
+            <div class="other-services__cont">
+                {% for p in blog %}
+                    <div class="other-services__cont_item">
+                        <a href="{{ p.get_absolute_url }}">
+                            <div class="other-services__cont_item_pic"><img src="{{ p.photo.url }}" alt=""></div>
+                            <div class="blog_title"><h2>{{ p.title }}</h2></div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block pages %}
+    {% if page_obj.has_other_pages %}
+        <nav class="list-pages">
+            <ul>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">
+                        <li class="page-num"><</li>
+                    </a>
+                {% endif %}
+
+                {% for p in paginator.page_range %}
+                    {% if page_obj.number == p %}
+                        <li class="page-num page-num-selected">{{ p }}</li>
+                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <a href="?page={{ p }}">
+                            <li class="page-num">{{ p }}</li>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">
+                        <li class="page-num">&gt;</li>
+                    </a>
+                {% endif %}
+
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}

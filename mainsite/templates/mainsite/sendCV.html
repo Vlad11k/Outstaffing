@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <diV class="form-container">
+        <diV class="form-header">
+            <h1>Отправить резюме</h1>
+        </diV>
+        <div class="form">
+            <div class="form-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for f in form %}
+                        <div class="form-group">
+                            <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                            <div>
+                                {{ f }}
+                            </div>
+                        </div>
+                        <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                    <p>
+                        <button type="submit">Отправить резюме</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

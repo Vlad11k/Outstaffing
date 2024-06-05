@@ -1,0 +1,7 @@
+{% for vacancy_cat in vacancy_cats %}
+{% if vacancy_cat.id == cat_selected %}
+<li class="selected_category">{{vacancy_cat.name}}</li>
+{% else %}
+<li><a href="{{ vacancy_cat.get_absolute_url }}">{{vacancy_cat.name}}</a></li>
+{% endif %}
+{% endfor %}

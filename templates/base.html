@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'css/base/style.css' %}" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="{% static 'mainsite/images/logo.ico' %}" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+{% block navigation %}
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="header-logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+            </div>
+            <nav class="header-nav">
+                {% for m in menu %}
+                    <div class="header-nav-item"><a class="header-nav-link"
+                                                    href="{% url m.url_name %}">{{ m.title }}</a></div>
+                {% endfor %}
+            </nav>
+            <div class="social-media">
+                <div class="social-media-item">
+                    <a href="https://www.linkedin.com"><img src="{% static 'images/link.png' %}" alt=""></a>
+                </div>
+                <div class="social-media-item">
+                    <a href="https://instagram.com"><img src="{% static 'images/inst.png' %}" alt=""></a>
+                </div>
+                <div class="social-media-item">
+                    <a href="https://www.facebook.com"><img src="{% static 'images/face.png' %}" alt=""></a>
+                </div>
+                <div class="social-media-item">
+                    <a href="https://www.behance.net"><img src="{% static 'images/behance.png' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<div>
+    {% block content %}
+    {% endblock %}
+
+    {% block pages %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load mainsite_tags %}
+
+{% block content %}
+    <div class="categories">
+        <ul class="category-list">
+            {% if cat_selected == 0 %}
+                <li>Все</li>
+            {% else %}
+                <li><a href="{% url 'vacancies' %}">Все</a></li>
+            {% endif %}
+            {% show_vacancy_categories cat_selected %}
+        </ul>
+    </div>
+
+    <div class="vacancy-cont">
+        <ul class="vacancy-cont-list">
+            {% for v in vacancies %}
+                <li class="vacancy-cont-item">
+                    <a class="vacancy-cont-list__wrap" href="{{ v.get_absolute_url }}">
+                        <div class="vacancy-cont-list__main">{{ v.title }}</div>
+                        <div class="vacancy-cont-list__salary">от {{ v.salary }} руб</div>
+                        <div class="vacancy-cont-list__btn"><button type="button">Подробнее</button></div>
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}

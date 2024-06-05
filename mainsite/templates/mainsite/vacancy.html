@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container page">
+        <div class="vacancy-text">
+            <div class="vacancy-header">
+                <h1>{{ vacancy.title }}</h1>
+                <h2>з/п {{ vacancy.salary }}</h2>
+            </div>
+            <p>
+                {{ vacancy.content|linebreaks }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% for post_cat in post_cats %}
+{% if post_cat.id == cat_selected %}
+<li class="selected_category">{{post_cat.name}}</li>
+{% else %}
+<li><a href="{{ post_cat.get_absolute_url }}">{{post_cat.name}}</a></li>
+{% endif %}
+{% endfor %}
